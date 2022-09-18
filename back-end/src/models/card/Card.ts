@@ -22,12 +22,12 @@ export enum CardValueEnum {
   QUEEN = "QUEEN",
   KING = "KING",
 }
-
-export type CardDocument = mongoose.Document & {
+export type CardLean = {
   value: CardValueEnum;
   suit: CardSuitEnum;
   code: string;
 };
+export type CardDocument = mongoose.Document & CardLean;
 
 const cardSchema = new mongoose.Schema<CardDocument>(
   {

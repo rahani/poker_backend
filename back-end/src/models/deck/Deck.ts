@@ -8,12 +8,13 @@ export enum DeckTypeEnum {
   SHORT = "SHORT",
 }
 
-export type DeckDocument = mongoose.Document & {
+export type DeckLean = {
   type: DeckTypeEnum;
   shuffled: boolean;
   cards: CardDocument[];
   remainings: number;
 };
+export type DeckDocument = mongoose.Document & DeckLean;
 
 const deckSchema = new mongoose.Schema<DeckDocument>(
   {
