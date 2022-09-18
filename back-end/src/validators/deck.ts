@@ -26,6 +26,7 @@ export const deckCreateValidator = [
 export const deckOpenValidator = [
   check("deckId").notEmpty().withMessage("deckId cannot be blank"),
   check("deckId").isString().withMessage("deckId must be a string"),
+  check("deckId").isUUID().withMessage("deckId must be a valid UUID"),
 
   (req: Request, res: Response, next: NextFunction) => {
     const errors = validationResult(req);
