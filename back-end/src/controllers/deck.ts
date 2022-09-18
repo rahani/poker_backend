@@ -8,12 +8,12 @@ import { Deck } from "../models/deck/Deck";
 // skip values for short deck
 const skipValuesShortDeck = ["2", "3", "4", "5", "6"];
 
-interface DeckCreateRequest {
+export interface DeckCreateRequest {
   type: DeckTypeEnum;
   shuffled: boolean;
 }
 
-interface DeckCreateResponse {
+export interface DeckCreateResponse {
   deckId: string;
   type: DeckTypeEnum;
   shuffled: boolean;
@@ -48,10 +48,12 @@ export const deckCreateController = async (req: Request, res: Response) => {
     };
   }
 
-  if (shuffled) {
-  }
-
   const cardsIds = await Card.find(filterQuery).distinct("_id");
+
+  if (shuffled) {
+    // very simple shuffle cardIds
+    cardsIds.sort(() => Math.random() - 0.5);
+  }
 
   /**
    * create a new deck
