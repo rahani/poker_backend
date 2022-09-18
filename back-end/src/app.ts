@@ -53,4 +53,9 @@ app.use(lusca.xssProtection(true));
  */
 app.post("/deck/create/", deckCreateValidator, deckCreateController);
 
+// handle 404 response
+app.use((_, res) => {
+  res.status(404).json({ message: "Endpoint not found in the server" });
+});
+
 export default app;
