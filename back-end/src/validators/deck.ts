@@ -22,3 +22,18 @@ export const deckCreateValidator = [
     next();
   },
 ];
+
+export const deckOpenValidator = [
+  check("deckId").notEmpty().withMessage("deckId cannot be blank"),
+  check("deckId").isString().withMessage("deckId must be a string"),
+
+  (req: Request, res: Response, next: NextFunction) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res
+        .status(400)
+        .json({ errors: errors.array({ onlyFirstError: true }) });
+    }
+    next();
+  },
+];

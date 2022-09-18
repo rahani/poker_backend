@@ -7,8 +7,8 @@ import MongoStore from "connect-mongo";
 import mongoose from "mongoose";
 import { MONGODB_URI, SESSION_SECRET } from "./util/secrets";
 import { Card } from "./models/card/Card";
-import { deckCreateController } from "./controllers/deck";
-import { deckCreateValidator } from "./validators/deck";
+import { deckCreateController, deckOpenController } from "./controllers/deck";
+import { deckCreateValidator, deckOpenValidator } from "./validators/deck";
 
 // Create Express server
 const app = express();
@@ -52,6 +52,7 @@ app.use(lusca.xssProtection(true));
  * Primary app routes.
  */
 app.post("/deck/create/", deckCreateValidator, deckCreateController);
+app.post("/deck/open/", deckOpenValidator, deckOpenController);
 
 // handle 404 response
 app.use((_, res) => {
