@@ -7,6 +7,8 @@ import MongoStore from "connect-mongo";
 import mongoose from "mongoose";
 import { MONGODB_URI, SESSION_SECRET } from "./util/secrets";
 import { Card } from "./models/card/Card";
+import { deckCreateController } from "./controllers/deck";
+import { deckCreateValidator } from "./validators/deck";
 
 // Create Express server
 const app = express();
@@ -49,5 +51,6 @@ app.use(lusca.xssProtection(true));
 /**
  * Primary app routes.
  */
+app.post("/deck/create/", deckCreateValidator, deckCreateController);
 
 export default app;
