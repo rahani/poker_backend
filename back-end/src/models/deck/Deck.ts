@@ -39,7 +39,7 @@ const deckSchema = new mongoose.Schema<DeckDocument>(
   { timestamps: true }
 );
 
-deckSchema.virtual("remainings").get(function () {
+deckSchema.virtual("remainings").get(function (this: DeckDocument) {
   return this.cards.length;
 });
 

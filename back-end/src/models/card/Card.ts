@@ -41,9 +41,9 @@ const cardSchema = new mongoose.Schema<CardDocument>(
 /**
  * card middleware.
  */
-cardSchema.pre("save", function save(next) {
-  const card = this as CardDocument;
-});
+// cardSchema.pre("save", function save(next) {
+//   const card = this as CardDocument;
+// });
 
 /**
  * define static method for pre init card data
