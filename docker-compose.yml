@@ -1,0 +1,26 @@
+version: "3.7"
+services:
+  # add nodejs
+  nodejs:
+    build: .
+    container_name: nodejs
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongodb
+    environment:
+      - NODE_ENV=production
+      - MONGODB_URI=mongodb://mongodb:27017/pokerApp
+      - MONGODB_URI_LOCAL=mongodb://mongodb:27017/pokerApp
+      - PORT=3000
+      - JWT_SECRET=secret
+      - SESSION_SECRET=sessionsecret
+    command: npm run start
+
+  mongodb:
+    image: mongo
+    ports:
+      - "26112:27017"
+    container_name: mongodb
+    volumes:
+      - ./db/:/data/db
