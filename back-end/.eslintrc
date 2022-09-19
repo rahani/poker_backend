@@ -16,6 +16,11 @@
         "ignoreParameters": true
       }
     ],
-    "@typescript-eslint/no-unused-vars": "warn"
+    "@typescript-eslint/no-unused-vars": "warn",
+
+    "prefer-const": ["warn", {
+      "destructuring": "any",
+      "ignoreReadBeforeAssign": false
+  }]
   }
 }
