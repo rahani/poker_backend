@@ -7,7 +7,9 @@ import MongoStore from "connect-mongo";
 import mongoose from "mongoose";
 import { MONGODB_URI, SESSION_SECRET } from "./util/secrets";
 import { Card } from "./models/card/Card";
-import { deckCreateController, deckOpenController } from "./controllers/deck";
+import { deckCreateController } from "./controllers/deck/create";
+import { deckOpenController } from "./controllers/deck/open";
+
 import { deckCreateValidator, deckOpenValidator } from "./validators/deck";
 
 // Create Express server
