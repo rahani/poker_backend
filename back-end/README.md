@@ -96,22 +96,25 @@ The full folder structure of this app is explained below:
 
 > **Note!** Make sure you have already built the app using `npm run build`
 
-| Name                | Description                                                                                                |
-| ------------------- | ---------------------------------------------------------------------------------------------------------- | --- |
-| **.vscode**         | Contains VS Code specific settings                                                                         |
-| **.github**         | Contains GitHub settings and configurations, including the GitHub Actions workflows                        |
-| **dist**            | Contains the distributable (or output) from the TypeScript build. This is the code you ship                |
-| **node_modules**    | Contains all the npm dependencies                                                                          |
-| **src**             | Contains the source code that will be compiled to the dist dir                                             |     |
-| **src/controllers** | Controllers define functions that respond to various http requests                                         |
-| **src/models**      | Models define Mongoose schemas that will be used in storing and retrieving data from MongoDB               |     |
-| **src**/server.ts   | Entry point to the express app                                                                             |
-| jest.config.js      | Used to configure Jest running tests written in TypeScript                                                 |
-| package.json        | File that contains npm dependencies as well as [build scripts](#what-if-a-library-isnt-on-definitelytyped) |
-| tsconfig.json       | Config settings for compiling server code written in TypeScript                                            |
-| tsconfig.tests.json | Config settings for compiling tests written in TypeScript                                                  |
-| .eslintrc           | Config settings for ESLint code style checking                                                             |
-| .eslintignore       | Config settings for paths to exclude from linting                                                          |
+| Name | Description |
+| ------------------------ | --------------------------------------------------------------------------------------------- |
+| **.vscode**              | Contains VS Code specific settings                                                            |
+| **.github**              | Contains GitHub settings and configurations, including the GitHub Actions workflows            |
+| **dist**                 | Contains the distributable (or output) from your TypeScript build. This is the code you ship  |
+| **node_modules**         | Contains all your npm dependencies                                                            |
+| **src**                  | Contains your source code that will be compiled to the dist dir                               |
+| **src/controllers**      | Controllers define functions that respond to various http requests                            |
+| **src/models**           | Models define Mongoose schemas that will be used in storing and retrieving data from MongoDB  |
+| **src/types**            | Holds .d.ts files not found on DefinitelyTyped. Covered more in this [section](#type-definition-dts-files)          |
+| **src**/server.ts        | Entry point to your express app                                                               |
+| **test**                 | Contains your tests. Separate from source because there is a different build process.         |
+| jest.config.js           | Used to configure Jest running tests written in TypeScript                                    |
+| package.json             | File that contains npm dependencies as well as [build scripts](#what-if-a-library-isnt-on-definitelytyped)                          |
+| tsconfig.json            | Config settings for compiling server code written in TypeScript                               |
+| tsconfig.tests.json      | Config settings for compiling tests written in TypeScript                                     |
+| .eslintrc                | Config settings for ESLint code style checking                                                |
+| .eslintignore            | Config settings for paths to exclude from linting                                             |
+
 
 ### Running the build
 
