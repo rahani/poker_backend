@@ -1,8 +1,8 @@
 # Poker App Backend
 
-This repository provide poker app API.
+This repository provides a poker app API.
 
-If you don't prefer to use Docker please follow this Structions.
+If you don't prefer to use Docker, please follow these instructions.
 
 # Table of contents:
 
@@ -96,45 +96,52 @@ The full folder structure of this app is explained below:
 
 > **Note!** Make sure you have already built the app using `npm run build`
 
-| Name | Description |
-| ------------------------ | --------------------------------------------------------------------------------------------- |
-| **.vscode**              | Contains VS Code specific settings                                                            |
-| **.github**              | Contains GitHub settings and configurations, including the GitHub Actions workflows            |
-| **dist**                 | Contains the distributable (or output) from your TypeScript build. This is the code you ship  |
-| **node_modules**         | Contains all your npm dependencies                                                            |
-| **src**                  | Contains your source code that will be compiled to the dist dir                               |
-| **src/controllers**      | Controllers define functions that respond to various http requests                            |
-| **src/models**           | Models define Mongoose schemas that will be used in storing and retrieving data from MongoDB  |
-| **src/types**            | Holds .d.ts files not found on DefinitelyTyped. Covered more in this [section](#type-definition-dts-files)          |
-| **src**/server.ts        | Entry point to your express app                                                               |
-| **test**                 | Contains your tests. Separate from source because there is a different build process.         |
-| jest.config.js           | Used to configure Jest running tests written in TypeScript                                    |
-| package.json             | File that contains npm dependencies as well as [build scripts](#what-if-a-library-isnt-on-definitelytyped)                          |
-| tsconfig.json            | Config settings for compiling server code written in TypeScript                               |
-| tsconfig.tests.json      | Config settings for compiling tests written in TypeScript                                     |
-| .eslintrc                | Config settings for ESLint code style checking                                                |
-| .eslintignore            | Config settings for paths to exclude from linting                                             |
-
+| Name                | Description                                                                                                |
+| ------------------- | ---------------------------------------------------------------------------------------------------------- |
+| **.vscode**         | Contains VS Code specific settings                                                                         |
+| **.github**         | Contains GitHub settings and configurations, including the GitHub Actions workflows                        |
+| **dist**            | Contains the distributable (or output) from your TypeScript build. This is the code you ship               |
+| **node_modules**    | Contains all your npm dependencies                                                                         |
+| **src**             | Contains your source code that will be compiled to the dist dir                                            |
+| **src/controllers** | Controllers define functions that respond to various http requests                                         |
+| **src/models**      | Models define Mongoose schemas that will be used in storing and retrieving data from MongoDB               |
+| **src/types**       | Holds .d.ts files not found on DefinitelyTyped. Covered more in this [section](#type-definition-dts-files) |
+| **src**/server.ts   | Entry point to your express app                                                                            |
+| **test**            | Contains your tests. Separate from source because there is a different build process.                      |
+| jest.config.js      | Used to configure Jest running tests written in TypeScript                                                 |
+| package.json        | File that contains npm dependencies as well as [build scripts](#what-if-a-library-isnt-on-definitelytyped) |
+| tsconfig.json       | Config settings for compiling server code written in TypeScript                                            |
+| tsconfig.tests.json | Config settings for compiling tests written in TypeScript                                                  |
+| .eslintrc           | Config settings for ESLint code style checking                                                             |
+| .eslintignore       | Config settings for paths to exclude from linting                                                          |
 
 ### Running the build
 
 All the different build steps are orchestrated via [npm scripts](https://docs.npmjs.com/misc/scripts).
 
+MAIN COMMANDS \*\*\*
 
-MAIN COMMANDS ***
+| Npm Script    | Description                                                                                   |
+| ------------- | --------------------------------------------------------------------------------------------- |
+| `build-ts`    | Compiles all source `.ts` files to `.js` files in the `dist` folder                           |
+| `build`       | Full build. Runs ALL build tasks (`build-sass`, `build-ts`, `lint`, `copy-static-assets`)     |
+| `debug`       | Performs a full build and then serves the app in watch mode                                   |
+| `lint`        | Runs ESLint on project files                                                                  |
+| `serve-debug` | Runs the app with the --inspect flag                                                          |
+| `serve`       | Runs node on `dist/server.js` which is the apps entry point                                   |
+| `start`       | Does the same as 'npm run serve'. Can be invoked with `npm start`                             |
+| `test`\*\*\*  | Runs tests using Jest test runner                                                             |
+| `watch-debug` | The same as `watch` but includes the --inspect flag so you can attach a debugger              |
+| `watch-node`  | Runs node with nodemon so the process restarts if it crashes. Used in the main watch task     |
+| `watch-test`  | Runs tests in watch mode                                                                      |
+| `watch-ts`    | Same as `build-ts` but continuously watches `.ts` files and re-compiles when needed           |
+| `watch`\*\*\* | Runs all watch tasks (TypeScript, Sass, Node). Use this if you're not touching static assets. |
 
-| Npm Script           | Description                                                                                   |
-| -------------------- | --------------------------------------------------------------------------------------------- |
-| `build-ts`           | Compiles all source `.ts` files to `.js` files in the `dist` folder                           |
-| `build`              | Full build. Runs ALL build tasks (`build-sass`, `build-ts`, `lint`, `copy-static-assets`)     |
-| `debug`              | Performs a full build and then serves the app in watch mode                                   |
-| `lint`               | Runs ESLint on project files                                                                  |
-| `serve-debug`        | Runs the app with the --inspect flag                                                          |
-| `serve`              | Runs node on `dist/server.js` which is the apps entry point                                   |
-| `start`              | Does the same as 'npm run serve'. Can be invoked with `npm start`                             |
-| `test`***               | Runs tests using Jest test runner                                                             |
-| `watch-debug`        | The same as `watch` but includes the --inspect flag so you can attach a debugger              |
-| `watch-node`         | Runs node with nodemon so the process restarts if it crashes. Used in the main watch task     |
-| `watch-test`         | Runs tests in watch mode                                                                      |
-| `watch-ts`           | Same as `build-ts` but continuously watches `.ts` files and re-compiles when needed           |
-| `watch`***              | Runs all watch tasks (TypeScript, Sass, Node). Use this if you're not touching static assets. |
+## Testing
+
+make sure you have already installed packages using `npm run install`
+
+and make sure you have already built the app using `npm run build`
+
+run the test using `npm run test`
+
