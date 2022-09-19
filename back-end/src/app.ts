@@ -10,7 +10,12 @@ import { Card } from "./models/card/Card";
 import { deckCreateController } from "./controllers/deck/create";
 import { deckOpenController } from "./controllers/deck/open";
 
-import { deckCreateValidator, deckOpenValidator } from "./validators/deck";
+import {
+  deckCreateValidator,
+  deckDrawValidator,
+  deckOpenValidator,
+} from "./validators/deck";
+import { deckDrawController } from "./controllers/deck/draw";
 
 // Create Express server
 const app = express();
@@ -55,6 +60,7 @@ app.use(lusca.xssProtection(true));
  */
 app.post("/deck/create/", deckCreateValidator, deckCreateController);
 app.post("/deck/open/", deckOpenValidator, deckOpenController);
+app.post("/deck/draw/", deckDrawValidator, deckDrawController);
 
 // handle 404 response
 app.use((_, res) => {

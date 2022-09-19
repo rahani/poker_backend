@@ -1,6 +1,7 @@
 import mongoose, { Model } from "mongoose";
 import * as MUUID from "uuid-mongodb";
-import { Card, CardDocument } from "../card/Card";
+import {  CardDocument } from "../card/Card";
+import { draw } from "./draw";
 const mUUID = MUUID.mode("relaxed"); // use relaxed mode
 
 export enum DeckTypeEnum {
@@ -14,7 +15,10 @@ export type DeckLean = {
   cards: CardDocument[];
   remainings: number;
 };
-export type DeckDocument = mongoose.Document & DeckLean;
+export type DeckDocument = mongoose.Document &
+  DeckLean & {
+    draw: (count: number) => Promise<CardDocument[]>;
+  };
 
 const deckSchema = new mongoose.Schema<DeckDocument>(
   {
@@ -38,6 +42,8 @@ const deckSchema = new mongoose.Schema<DeckDocument>(
 deckSchema.virtual("remainings").get(function () {
   return this.cards.length;
 });
+
+deckSchema.methods.draw = draw;
 
 /**
  * deck middleware.
