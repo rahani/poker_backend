@@ -2,7 +2,6 @@ import request from "supertest";
 import app from "../../../src/app";
 import { describe, expect, it } from "@jest/globals";
 
-import { DeckOpenRequest } from "../../../src/controllers/deck/open";
 import { DeckTypeEnum } from "../../../src/models/deck/Deck";
 import { DeckDrawRequest } from "../../../src/controllers/deck/draw";
 const CONTENT_TYPE_JSON = "application/json; charset=utf-8";
@@ -49,7 +48,6 @@ describe("POST /deck/draw", () => {
       deckId: validUUID,
       count: correctCount,
     };
-    console.log(validUUID);
 
     return request(app)
       .post("/deck/draw/")

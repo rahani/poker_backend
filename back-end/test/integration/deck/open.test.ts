@@ -43,7 +43,6 @@ describe("POST /deck/open", () => {
     const validRequest: DeckOpenRequest = {
       deckId: validUUID,
     };
-    console.log(validUUID);
 
     return request(app)
       .post("/deck/open/")
