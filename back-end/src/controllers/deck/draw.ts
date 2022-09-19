@@ -50,8 +50,9 @@ export const deckDrawController = async (req: Request, res: Response) => {
 
     const cardIds = await deck.draw(count);
     const cards = await Card.find({ _id: { $in: cardIds } }, { _id: 0 });
+    const response = { cards } as DeckDrawResponse;
 
-    return res.status(200).json({ cards });
+    return res.status(200).json(response);
   } catch (err) {
     /**
      * log the error
