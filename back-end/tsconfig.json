@@ -11,6 +11,7 @@
     "removeComments": true,
     "baseUrl": ".",
     "strict": true,
+    "skipLibCheck": true,
     "paths": {
       "*": ["node_modules/*", "src/types/*"]
     }
